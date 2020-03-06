@@ -113,3 +113,16 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+ table td {
+     max-width: 300px !important;
+     overflow: hidden;
+     white-space: nowrap;
+     text-overflow: ellipsis;
+ }
+
+table td:hover{
+    overflow: visible;
+    white-space: normal;
+    width: auto;
+}

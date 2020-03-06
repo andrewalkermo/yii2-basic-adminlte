@@ -1,53 +1,71 @@
 <?php
 
+use yii\data\ArrayDataProvider;
+use yii\db\Query;
+use yii\helpers\Html;
+use yii\grid\GridView;
+
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = Yii::$app->name;
+$query = new Query;
+
+$tabelas = [
+    ['tabela' => 'accounts', 'registros' => $query->select('*') ->from('accounts')->count()],
+    ['tabela' => 'adverts', 'registros' => $query->select('*') ->from('adverts')->count()],
+    ['tabela' => 'affiliates', 'registros' => $query->select('*') ->from('affiliates')->count()],
+    ['tabela' => 'answers', 'registros' => $query->select('*') ->from('answers')->count()],
+    ['tabela' => 'board', 'registros' => $query->select('*') ->from('board')->count()],
+    ['tabela' => 'boleto', 'registros' => $query->select('*') ->from('boleto')->count()],
+    ['tabela' => 'bonus', 'registros' => $query->select('*') ->from('bonus')->count()],
+    ['tabela' => 'called', 'registros' => $query->select('*') ->from('called')->count()],
+    ['tabela' => 'cards', 'registros' => $query->select('*') ->from('cards')->count()],
+    ['tabela' => 'cashout', 'registros' => $query->select('*') ->from('cashout')->count()],
+    ['tabela' => 'catchthigh', 'registros' => $query->select('*') ->from('catchthigh')->count()],
+    ['tabela' => 'history', 'registros' => $query->select('*') ->from('history')->count()],
+    ['tabela' => 'hits', 'registros' => $query->select('*') ->from('hits')->count()],
+    ['tabela' => 'indicated', 'registros' => $query->select('*') ->from('indicated')->count()],
+    ['tabela' => 'invested', 'registros' => $query->select('*') ->from('invested')->count()],
+    ['tabela' => 'levels', 'registros' => $query->select('*') ->from('levels')->count()],
+    ['tabela' => 'moves', 'registros' => $query->select('*') ->from('moves')->count()],
+    ['tabela' => 'mp', 'registros' => $query->select('*') ->from('mp')->count()],
+    ['tabela' => 'pages', 'registros' => $query->select('*') ->from('pages')->count()],
+    ['tabela' => 'paypal', 'registros' => $query->select('*') ->from('paypal')->count()],
+    ['tabela' => 'rating', 'registros' => $query->select('*') ->from('rating')->count()],
+    ['tabela' => 'security', 'registros' => $query->select('*') ->from('security')->count()],
+    ['tabela' => 'timeline', 'registros' => $query->select('*') ->from('timeline')->count()],
+];
+$provider = new ArrayDataProvider([
+    'allModels' => $tabelas,
+    'pagination' => [
+        'pageSize' =>  25,
+    ],
+]);
 ?>
-<div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
+<div class="site-index box center-block box-primary" style="margin-top: 20px; width: 60%">
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+    <div class="box-header with-border">
+        <h1 style="text-align: center"><?= Html::encode($this->title) ?></h1>
     </div>
+    <div class="table-responsive box-body" style="padding: 20px">
+        <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
+        <?= GridView::widget([
+            'dataProvider' => $provider,
+            'columns' => [
+                'tabela',
+                'registros',
+                [
+                    'class' => 'yii\grid\ActionColumn',
+                    'header' => 'Ações',
+                    'template' => '{update}',
+                    'headerOptions' =>['style' => 'color: #3c8dbc; width:50px'],
+                    'buttons' => [
+                        'update' => function ($url, $model) {return Html::a('<i class="fa fa-pencil-square-o" style="font-size: small;" aria-hidden="true"></i>', \yii\helpers\Url::to($model['tabela']), ['class' => 'btn btn-sm btn-warning', 'title' => Yii::t('yii', 'Editar'),]);},
+                    ]
+                ],        ],
+        ]); ?>
 
     </div>
 </div>
