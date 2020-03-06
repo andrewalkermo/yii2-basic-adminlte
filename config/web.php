@@ -53,7 +53,8 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 '/logout' => 'site/logout',
-                '/login' => 'site/login'
+                '/login' => 'site/login',
+                '/' => '/site'
             ],
         ],
         /*'view' => [
