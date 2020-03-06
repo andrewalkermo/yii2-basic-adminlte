@@ -14,12 +14,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="box-header with-border">
         <div class="row">
-            <div class="col-md-4 col-sm-4 col-xs-4" style=" margin-top: 25px">
+            <div class="col-sm-4" style=" margin-top: 25px">
             </div>
-            <div class="col-md-4 col-sm-4 col-xs-4">
+            <div class="col-sm-4">
                 <h1 style="text-align: center"><?=   Yii::t('app', 'Cards') . ": " . Html::encode($this->title) ?></h1>
             </div>
-            <div class="col-md-4 col-sm-4 col-xs-4" style="text-align: right; padding-right: 20px; margin-top: 25px">
+            <div class="col-sm-4" style="text-align: right; padding-right: 20px; margin-top: 25px">
                 <?= Html::a(Yii::t('app', 'Editar'), ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
                 <?= Html::a(Yii::t('app', 'Deletar'), ['delete', 'id' => $model->id], [
                 'class' => 'btn btn-danger',

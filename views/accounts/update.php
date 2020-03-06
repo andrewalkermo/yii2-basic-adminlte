@@ -22,26 +22,3 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
         ]) ?>
     </div>
 </div>
-    accounts
-    adverts
-    affiliates
-    answers
-    board
-    boleto
-    bonus
-    called
-    cards
-    cashout
-    catchthigh
-    history
-    hits
-    indicated
-    invested
-    levels
-    moves
-    mp
-    pages
-    paypal
-    rating
-    security
-    timeline

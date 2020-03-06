@@ -17,7 +17,7 @@ use yii\helpers\Html;
         <div class="navbar-custom-menu">
 
             <ul class="nav navbar-nav">
-                <li class="dropdown tasks-menu">
+                <li class="dropdown tasks-menu" style="background-color: #dd4b39">
                     <?= Html::a('<i class="fa fa-sign-out" aria-hidden="true"></i><span> Sair</span>', \yii\helpers\Url::base() .'/logout', [
                         'class' => 'btn btn-danger',
                         'title' => Yii::t('yii', 'Sair'),
