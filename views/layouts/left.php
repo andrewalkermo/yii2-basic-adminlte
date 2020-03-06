@@ -31,35 +31,31 @@
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
+
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
-                    ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
+                    ['label' => 'accounts', 'icon' => 'dashboard', 'url' => ['/accounts']],
+                    ['label' => 'adverts', 'icon' => 'dashboard', 'url' => ['/adverts']],
+                    ['label' => 'affiliates', 'icon' => 'dashboard', 'url' => ['/affiliates']],
+                    ['label' => 'answers', 'icon' => 'dashboard', 'url' => ['/answers']],
+                    ['label' => 'board', 'icon' => 'dashboard', 'url' => ['/board']],
+                    ['label' => 'boleto', 'icon' => 'dashboard', 'url' => ['/boleto']],
+                    ['label' => 'bonus', 'icon' => 'dashboard', 'url' => ['/bonus']],
+                    ['label' => 'called', 'icon' => 'dashboard', 'url' => ['/called']],
+                    ['label' => 'cards', 'icon' => 'dashboard', 'url' => ['/cards']],
+                    ['label' => 'cashout', 'icon' => 'dashboard', 'url' => ['/cashout']],
+                    ['label' => 'catchthigh', 'icon' => 'dashboard', 'url' => ['/catchthigh']],
+                    ['label' => 'history', 'icon' => 'dashboard', 'url' => ['/history']],
+                    ['label' => 'hits', 'icon' => 'dashboard', 'url' => ['/hits']],
+                    ['label' => 'indicated', 'icon' => 'dashboard', 'url' => ['/indicated']],
+                    ['label' => 'invested', 'icon' => 'dashboard', 'url' => ['/invested']],
+                    ['label' => 'levels', 'icon' => 'dashboard', 'url' => ['/levels']],
+                    ['label' => 'moves', 'icon' => 'dashboard', 'url' => ['/moves']],
+                    ['label' => 'mp', 'icon' => 'dashboard', 'url' => ['/mp']],
+                    ['label' => 'pages', 'icon' => 'dashboard', 'url' => ['/pages']],
+                    ['label' => 'paypal', 'icon' => 'dashboard', 'url' => ['/paypal']],
+                    ['label' => 'rating', 'icon' => 'dashboard', 'url' => ['/rating']],
+
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
-                    [
-                        'label' => 'Some tools',
-                        'icon' => 'share',
-                        'url' => '#',
-                        'items' => [
-                            ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii'],],
-                            ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
-                            [
-                                'label' => 'Level One',
-                                'icon' => 'circle-o',
-                                'url' => '#',
-                                'items' => [
-                                    ['label' => 'Level Two', 'icon' => 'circle-o', 'url' => '#',],
-                                    [
-                                        'label' => 'Level Two',
-                                        'icon' => 'circle-o',
-                                        'url' => '#',
-                                        'items' => [
-                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-                                        ],
-                                    ],
-                                ],
-                            ],
-                        ],
-                    ],
                 ],
             ]
         ) ?>
