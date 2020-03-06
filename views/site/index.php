@@ -43,7 +43,7 @@ $provider = new ArrayDataProvider([
 ]);
 ?>
 
-<div class="site-index box center-block box-primary" style="margin-top: 20px; width: 60%">
+<div class="site-index box center-block box-primary" style="margin-top: 20px; width: 80%">
 
     <div class="box-header with-border">
         <h1 style="text-align: center"><?= Html::encode($this->title) ?></h1>
