@@ -5,43 +5,61 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="<?= \yii\helpers\Url::base() . "/img/user.png" ?>" class="img-circle" alt="User Image"/>
+                <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
-                <p>Admin</p>
+                <p>Alexander Pierce</p>
+
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
-
         </div>
+
+        <!-- search form -->
+        <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search..."/>
+              <span class="input-group-btn">
+                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+        </form>
+        <!-- /.search form -->
 
         <?= dmstr\widgets\Menu::widget(
             [
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
-                    ['label' => 'Tabelas', 'options' => ['class' => 'header']],
-                    ['label' => ucfirst('accounts'), 'icon' => 'list', 'url' => ['/accounts']],
-                    ['label' => ucfirst('adverts'), 'icon' => 'list', 'url' => ['/adverts']],
-                    ['label' => ucfirst('affiliates'), 'icon' => 'list', 'url' => ['/affiliates']],
-                    ['label' => ucfirst('answers'), 'icon' => 'list', 'url' => ['/answers']],
-                    ['label' => ucfirst('board'), 'icon' => 'list', 'url' => ['/board']],
-                    ['label' => ucfirst('boleto'), 'icon' => 'list', 'url' => ['/boleto']],
-                    ['label' => ucfirst('bonus'), 'icon' => 'list', 'url' => ['/bonus']],
-                    ['label' => ucfirst('called'), 'icon' => 'list', 'url' => ['/called']],
-                    ['label' => ucfirst('cards'), 'icon' => 'list', 'url' => ['/cards']],
-                    ['label' => ucfirst('cashout'), 'icon' => 'list', 'url' => ['/cashout']],
-                    ['label' => ucfirst('catchthigh'), 'icon' => 'list', 'url' => ['/catchthigh']],
-                    ['label' => ucfirst('history'), 'icon' => 'list', 'url' => ['/history']],
-                    ['label' => ucfirst('hits'), 'icon' => 'list', 'url' => ['/hits']],
-                    ['label' => ucfirst('indicated'), 'icon' => 'list', 'url' => ['/indicated']],
-                    ['label' => ucfirst('invested'), 'icon' => 'list', 'url' => ['/invested']],
-                    ['label' => ucfirst('levels'), 'icon' => 'list', 'url' => ['/levels']],
-                    ['label' => ucfirst('moves'), 'icon' => 'list', 'url' => ['/moves']],
-                    ['label' => ucfirst('mp'), 'icon' => 'list', 'url' => ['/mp']],
-                    ['label' => ucfirst('pages'), 'icon' => 'list', 'url' => ['/pages']],
-                    ['label' => ucfirst('paypal'), 'icon' => 'list', 'url' => ['/paypal']],
-                    ['label' => ucfirst('rating'), 'icon' => 'list', 'url' => ['/rating']],
-                    ['label' => ucfirst('security'), 'icon' => 'list', 'url' => ['/security']],
-                    ['label' => ucfirst('timeline'), 'icon' => 'list', 'url' => ['/timeline']],
+                    ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
+                    ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
+                    ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
+                    ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
+                    [
+                        'label' => 'Some tools',
+                        'icon' => 'share',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii'],],
+                            ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
+                            [
+                                'label' => 'Level One',
+                                'icon' => 'circle-o',
+                                'url' => '#',
+                                'items' => [
+                                    ['label' => 'Level Two', 'icon' => 'circle-o', 'url' => '#',],
+                                    [
+                                        'label' => 'Level Two',
+                                        'icon' => 'circle-o',
+                                        'url' => '#',
+                                        'items' => [
+                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
+                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
             ]
         ) ?>

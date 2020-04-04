@@ -5,12 +5,8 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
-    'name' => 'Painel Admin',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'language'=>'pt-BR',
-    'sourceLanguage'=>'pt-BR',
-
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -52,9 +48,6 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '/logout' => 'site/logout',
-                '/login' => 'site/login',
-                '/' => '/site'
             ],
         ],
         /*'view' => [
