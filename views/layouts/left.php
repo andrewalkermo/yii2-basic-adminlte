@@ -1,3 +1,8 @@
+<?php
+
+use yii\helpers\Url;
+use webvimark\modules\UserManagement\models\User;
+?>
 <aside class="main-sidebar">
 
     <section class="sidebar">
@@ -5,10 +10,10 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
+                <img src="<?= Url::to('@web/img/andre.jpeg') ?>" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
-                <p>Alexander Pierce</p>
+                <p>André Walker</p>
 
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -25,66 +30,40 @@
             </div>
         </form>
         <!-- /.search form -->
-        <?php
-        use webvimark\modules\UserManagement\components\GhostMenu;
-        use webvimark\modules\UserManagement\UserManagementModule;
 
-        echo GhostMenu::widget([
-            'encodeLabels'=>false,
-            'activateParents'=>true,
-            'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
-            'items' => [
-                [
-                    'label' => 'Backend routes',
-                    'items'=>UserManagementModule::menuItems()
-                ],
-                [
-                    'label' => 'Frontend routes',
-                    'items'=>[
-                        ['label'=>'Login', 'url'=>['/user-management/auth/login']],
-                        ['label'=>'Logout', 'url'=>['/user-management/auth/logout']],
-                        ['label'=>'Registration', 'url'=>['/user-management/auth/registration']],
-                        ['label'=>'Change own password', 'url'=>['/user-management/auth/change-own-password']],
-                        ['label'=>'Password recovery', 'url'=>['/user-management/auth/password-recovery']],
-                        ['label'=>'E-mail confirmation', 'url'=>['/user-management/auth/confirm-email']],
-                    ],
-                ],
-            ],
-        ]);
-        ?>
+
 
         <?= dmstr\widgets\Menu::widget(
             [
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
-                    ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
+                    ['label' => 'Menu', 'options' => ['class' => 'header']],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                     ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
-                    ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     [
-                        'label' => 'Some tools',
-                        'icon' => 'share',
+                        'label' => 'Rotas Backend',
+                        'icon' => 'cog',
                         'url' => '#',
+                        'visible' => User::hasPermission('admin', $superAdminAllowed = true),
                         'items' => [
-                            ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii'],],
-                            ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
-                            [
-                                'label' => 'Level One',
-                                'icon' => 'circle-o',
-                                'url' => '#',
-                                'items' => [
-                                    ['label' => 'Level Two', 'icon' => 'circle-o', 'url' => '#',],
-                                    [
-                                        'label' => 'Level Two',
-                                        'icon' => 'circle-o',
-                                        'url' => '#',
-                                        'items' => [
-                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-                                        ],
-                                    ],
-                                ],
-                            ],
+                            ['label' => 'Usuários', 'url' => ['/user-management/user/index'], 'visible' => User::canRoute('/user-management/user/index', $superAdminAllowed = true)],
+                            ['label' => 'Regras de acesso', 'url' => ['/user-management/role/index'], 'visible' => User::canRoute('/user-management/role/index', $superAdminAllowed = true)],
+                            ['label' => 'Permissões', 'url' => ['/user-management/permission/index'], 'visible' => User::canRoute('/user-management/permission/index', $superAdminAllowed = true)],
+                            ['label' => 'Grupo de permissões', 'url' => ['/user-management/auth-item-group/index'], 'visible' => User::canRoute('/user-management/auth-item-group/index', $superAdminAllowed = true)],
+                            ['label' => 'Log de visitas', 'url' => ['/user-management/user-visit-log/index'], 'visible' => User::canRoute('/user-management/user-visit-log/index', $superAdminAllowed = true)],
+                        ]
+                    ],
+                    [
+                        'label' => 'Frontend routes',
+                        'icon' => 'desktop',
+                        'url' => '#',
+                        'items'=>[
+                            ['label'=>'Login', 'url'=>['/user-management/auth/login'], 'visible' => User::canRoute('/user-management/auth/login', $superAdminAllowed = true)],
+                            ['label'=>'Logout', 'url'=>['/user-management/auth/logout'], 'visible' => User::canRoute('/user-management/auth/logout', $superAdminAllowed = true)],
+                            ['label'=>'Registration', 'url'=>['/user-management/auth/registration'], 'visible' => User::canRoute('/user-management/auth/registration', $superAdminAllowed = true)],
+                            ['label'=>'Change own password', 'url'=>['/user-management/auth/change-own-password'], 'visible' => User::canRoute('/user-management/auth/change-own-password', $superAdminAllowed = true)],
+                            ['label'=>'Password recovery', 'url'=>['/user-management/auth/password-recovery'], 'visible' => User::canRoute('/user-management/auth/password-recovery', $superAdminAllowed = true)],
+                            ['label'=>'E-mail confirmation', 'url'=>['/user-management/auth/confirm-email'], 'visible' => User::canRoute('/user-management/auth/confirm-email', $superAdminAllowed = true)],
                         ],
                     ],
                 ],

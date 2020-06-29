@@ -38,7 +38,7 @@ class Generator extends \yii\gii\Generator
     /**
      * @var string the base class of the controller
      */
-    public $baseClass = 'yii\web\Controller';
+    public $baseClass = 'app\controllers\BaseController';
     /**
      * @var string list of action IDs separated by commas or spaces
      */

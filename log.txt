@@ -1,0 +1,6 @@
+Site test.yii2-basic-adminlte disabled.
+To activate the new configuration, you need to run:
+  systemctl reload apache2
+Enabling site test.yii2-basic-adminlte.
+To activate the new configuration, you need to run:
+  systemctl reload apache2
