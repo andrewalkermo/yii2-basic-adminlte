@@ -74,16 +74,17 @@ $this->params['breadcrumbs'][] = $this->title;
             ?>
 
             [
-            'class' => 'yii\grid\ActionColumn',
-            'header' => 'Ações',
-            'template' => '{view}&nbsp;{update}&nbsp;{delete}',
-            'headerOptions' =>['style' => 'color: #3c8dbc; width:150px'],
-            'buttons' => [
-            'view' => function ($url, $model) { return Html::a('<i class="fa fa-eye" style="font-size: small;" aria-hidden="true"></i>', $url, ['class' => 'btn btn-sm btn-info', 'title' => Yii::t('yii', 'Detalhes'),]);},
-            'update' => function ($url, $model) {return Html::a('<i class="fa fa-pencil-square-o" style="font-size: small;" aria-hidden="true"></i>', $url, ['class' => 'btn btn-sm btn-warning', 'title' => Yii::t('yii', 'Editar'),]);},
-            'delete' => function ($url, $model) {return Html::a('<i class="fa fa-trash" style="font-size: small;" aria-hidden="true"></i>', $url, ['class' => 'btn btn-sm btn-danger', 'title' => Yii::t('yii', 'Deletar'), 'data' => ['confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),'method' => 'post']]);},
-            ]
-            ],        ],
+                'class' => 'yii\grid\ActionColumn',
+                'header' => 'Ações',
+                'template' => '{view}&nbsp;{update}&nbsp;{delete}',
+                'headerOptions' =>['style' => 'color: #3c8dbc; width:150px'],
+                'buttons' => [
+                    'view' => function ($url, $model) { return Html::a('<i class="fa fa-eye" style="font-size: small;" aria-hidden="true"></i>', $url, ['class' => 'btn btn-xs btn-info', 'title' => Yii::t('yii', 'Detalhes'),]);},
+                    'update' => function ($url, $model) {return Html::a('<i class="fa fa-pencil-square-o" style="font-size: small;" aria-hidden="true"></i>', $url, ['class' => 'btn btn-xs btn-warning', 'title' => Yii::t('yii', 'Editar'),]);},
+                    'delete' => function ($url, $model) {return Html::a('<i class="fa fa-trash" style="font-size: small;" aria-hidden="true"></i>', $url, ['class' => 'btn btn-xs btn-danger', 'title' => Yii::t('yii', 'Deletar'), 'data' => ['confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),'method' => 'post']]);},
+                ]
+            ],
+            ],
             ]); ?>
         <?php else: ?>
             <?= "<?= " ?>ListView::widget([
