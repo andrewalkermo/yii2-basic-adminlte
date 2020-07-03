@@ -8,6 +8,8 @@ $config = [
     'name' => 'Painel Admin',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'language' => 'pt-BR',
+    'sourceLanguage' => 'en-US',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -68,18 +70,18 @@ $config = [
         'user-management' => [
             'class' => 'webvimark\modules\UserManagement\UserManagementModule',
 
-            // 'enableRegistration' => true,
+             'enableRegistration' => true,
 
             // Add regexp validation to passwords. Default pattern does not restrict user and can enter any set of characters.
             // The example below allows user to enter :
             // any set of characters
             // (?=\S{8,}): of at least length 8
             // (?=\S*[a-z]): containing at least one lowercase letter
-            // (?=\S*[A-Z]): and at least one uppercase letter
+            // (?=\S*[A-Z]): and athttp://test.suregsa/cipa-membros least one uppercase letter
             // (?=\S*[\d]): and at least one number
             // $: anchored to the end of the string
 
-            //'passwordRegexp' => '^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$',
+            //'passwordRegexp' => 'http://test.suregsa/cipa-membros^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$',
 
 
             // Here you can set your handler to change layout for any controller or action
@@ -113,8 +115,19 @@ if (YII_ENV_DEV) {
             'crud' => [
                 'class' => 'yii\gii\generators\crud\Generator',
                 'templates' => [
-                    'adminlte' => '@vendor/dmstr/yii2-adminlte-asset/gii/templates/crud/simple',
-                    'custom' => '@app/gii-template/crud/default',
+                    'crud-relations' => '@app/gii-template/crud/default',
+                ]
+            ],
+            'model' => [
+                'class' => 'yii\gii\generators\model\Generator',
+                'templates' => [
+                    'model-relations' => '@app/gii-temlate/model/default',
+                ]
+            ],
+            'controller' => [
+                'class' => 'yii\gii\generators\controller\Generator',
+                'templates' => [
+                    'controller-relations' => '@app/gii-temlate/controller/default',
                 ]
             ]
         ],

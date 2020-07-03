@@ -1,13 +1,22 @@
 <?php
-
+if(getenv("CLEARDB_DATABASE_URL")) {
+    $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+    $server = $url["host"];
+    $username = $url["user"];
+    $password = $url["pass"];
+    $db = substr($url["path"], 1);
+}
+else {
+    $server = "localhost";
+    $username = "rootphp";
+    $password = "rootphp";
+    $db = "yii2-basic-adminlte";
+}
 return [
     'class' => 'yii\db\Connection',
-//    'dsn' => 'mysql:host=localhost;dbname=yii2-basic-adminlte',
-//    'username' => 'rootphp',
-//    'password' => 'rootphp',
-    'dsn' => 'mysql:host=us-cdbr-east-06.cleardb.net;dbname=heroku_7d534216678416f',
-    'username' => 'bad35be90d1b12',
-    'password' => '5e408032',
+    'dsn' => "mysql:host={$server};dbname={$db}",
+    'username' => $username,
+    'password' => $password,
     'charset' => 'utf8',
 
     // Schema cache options (for production environment)

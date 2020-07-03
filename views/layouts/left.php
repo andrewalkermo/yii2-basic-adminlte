@@ -37,9 +37,7 @@ use webvimark\modules\UserManagement\models\User;
             [
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
-                    ['label' => 'Menu', 'options' => ['class' => 'header']],
-                    ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
-                    ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
+                    ['label' => 'Rotas do módulo de usuário', 'options' => ['class' => 'header']],
                     [
                         'label' => 'Rotas Backend',
                         'icon' => 'cog',
@@ -54,18 +52,21 @@ use webvimark\modules\UserManagement\models\User;
                         ]
                     ],
                     [
-                        'label' => 'Frontend routes',
+                        'label' => 'Rotas Frontend',
                         'icon' => 'desktop',
                         'url' => '#',
                         'items'=>[
                             ['label'=>'Login', 'url'=>['/user-management/auth/login'], 'visible' => User::canRoute('/user-management/auth/login', $superAdminAllowed = true)],
                             ['label'=>'Logout', 'url'=>['/user-management/auth/logout'], 'visible' => User::canRoute('/user-management/auth/logout', $superAdminAllowed = true)],
-                            ['label'=>'Registration', 'url'=>['/user-management/auth/registration'], 'visible' => User::canRoute('/user-management/auth/registration', $superAdminAllowed = true)],
-                            ['label'=>'Change own password', 'url'=>['/user-management/auth/change-own-password'], 'visible' => User::canRoute('/user-management/auth/change-own-password', $superAdminAllowed = true)],
-                            ['label'=>'Password recovery', 'url'=>['/user-management/auth/password-recovery'], 'visible' => User::canRoute('/user-management/auth/password-recovery', $superAdminAllowed = true)],
-                            ['label'=>'E-mail confirmation', 'url'=>['/user-management/auth/confirm-email'], 'visible' => User::canRoute('/user-management/auth/confirm-email', $superAdminAllowed = true)],
+                            ['label'=>'Cadastro', 'url'=>['/user-management/auth/registration'], 'visible' => User::canRoute('/user-management/auth/registration', $superAdminAllowed = true)],
+                            ['label'=>'Mudar senha', 'url'=>['/user-management/auth/change-own-password'], 'visible' => User::canRoute('/user-management/auth/change-own-password', $superAdminAllowed = true)],
+                            ['label'=>'Recuperar senha', 'url'=>['/user-management/auth/password-recovery'], 'visible' => User::canRoute('/user-management/auth/password-recovery', $superAdminAllowed = true)],
+                            ['label'=>'Confirmar e-mail', 'url'=>['/user-management/auth/confirm-email'], 'visible' => User::canRoute('/user-management/auth/confirm-email', $superAdminAllowed = true)],
                         ],
                     ],
+                    ['label' => 'Desenvolvimento', 'options' => ['class' => 'header'], 'visible' => YII_ENV_DEV],
+                    ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii'], 'visible' => YII_ENV_DEV],
+                    ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'], 'visible' => YII_ENV_DEV],
                 ],
             ]
         ) ?>
