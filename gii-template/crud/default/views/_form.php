@@ -27,16 +27,21 @@ use yii\widgets\ActiveForm;
 <div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-form">
 
     <?= "<?php " ?>$form = ActiveForm::begin(); ?>
+<div class="row">
+    <?php foreach ($generator->getColumnNames() as $attribute) {
+        if (in_array($attribute, $safeAttributes)) {
+            echo "    <div class='col-sm-6'>\n";
+            echo "        <?= " . $generator->generateActiveField($attribute) . " ?>\n";
+            echo "    </div>\n\n";
+        }
+    } ?>
+       <div class="col-sm-12">
+           <div class="form-group" style="text-align: right;">
+               <?= "<?= " ?>Html::submitButton(<?= $generator->generateString('Salvar') ?>, ['class' => 'btn btn-success']) ?>
+           </div>
+       </div>
 
-<?php foreach ($generator->getColumnNames() as $attribute) {
-    if (in_array($attribute, $safeAttributes)) {
-        echo "    <?= " . $generator->generateActiveField($attribute) . " ?>\n\n";
-    }
-} ?>
-    <div class="form-group" style="text-align: right;">
-        <?= "<?= " ?>Html::submitButton(<?= $generator->generateString('Salvar') ?>, ['class' => 'btn btn-success']) ?>
+        <?= "<?php " ?>ActiveForm::end(); ?>
+
     </div>
-
-    <?= "<?php " ?>ActiveForm::end(); ?>
-
 </div>

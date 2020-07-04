@@ -28,64 +28,68 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="box-header with-border">
         <div class="row">
-            <div class="col-md-4 col-sm-4 col-xs-4" style=" margin-top: 25px">
-            </div>
-            <div class="col-md-4 col-sm-4 col-xs-4">
+            <div class="col-sm-4 col-sm-push-4">
                 <h1 style="text-align: center"><?= "<?= " ?>Html::encode($this->title) ?></h1>
+
             </div>
-            <div class="col-md-4 col-sm-4 col-xs-4" style="text-align: right; padding-right: 20px; margin-top: 25px">
+            <div class="col-sm-4 col-sm-pull-4 col-xs-6" style=" margin-top: 25px">
+
+            </div>
+            <div class="col-sm-4 col-xs-6" style="text-align: right; padding-right: 20px; margin-top: 25px">
                 <?= "<?= " ?>Html::a(<?= $generator->generateString('Criar ' . Inflector::camel2words(StringHelper::basename($generator->modelClass))) ?>, ['create'], ['class' => 'btn btn-success']) ?>
+
             </div>
         </div>
 
+
     </div>
-    <div class="table-responsive box-body" style="padding: 20px">
+    <div class="table-responsive box-body" style="font-size: small; padding: 20px">
         <?= $generator->enablePjax ? "    <?php Pjax::begin(); ?>\n" : '' ?>
-        <?php if(!empty($generator->searchModelClass)): ?>
-            <?= "    <?php " . ($generator->indexWidgetType === 'grid' ? "// " : "") ?>echo $this->render('_search', ['model' => $searchModel]); ?>
-        <?php endif; ?>
+<?php if(!empty($generator->searchModelClass)): ?>
+<?="<?php " . ($generator->indexWidgetType === 'grid' ? "// " : "") ?>echo $this->render('_search', ['model' => $searchModel]); ?>
+<?php endif; ?>
 
         <?php if ($generator->indexWidgetType === 'grid'): ?>
-            <?= "<?= " ?>GridView::widget([
+<?= "<?= " ?>GridView::widget([
             'dataProvider' => $dataProvider,
             'filterSelector' => '#pageSize',
             'layout'=>'{summary}'.Html::activeDropDownList($searchModel, 'pageSize', [10 => 10, 20 => 20, 50 => 50, 100 => 100],['id' => 'pageSize', 'class'=>'form-control', 'style'=>'width:90px;' ]).'<br/>{items}<br/>{pager}',
-            <?= !empty($generator->searchModelClass) ? "'filterModel' => \$searchModel,\n        'columns' => [\n" : "'columns' => [\n"; ?>
-            <?php
-            $count = 0;
-            if (($tableSchema = $generator->getTableSchema()) === false) {
-                foreach ($generator->getColumnNames() as $name) {
-                    if (++$count < 6) {
-                        echo "            '" . $name . "',\n";
-                    } else {
-                        echo "            //'" . $name . "',\n";
-                    }
-                }
-            } else {
-                foreach ($tableSchema->columns as $column) {
-                    $format = $generator->generateColumnFormat($column);
-                    if (++$count < 6) {
-                        echo "            '" . $column->name . ($format === 'text' ? "" : ":" . $format) . "',\n";
-                    } else {
-                        echo "            //'" . $column->name . ($format === 'text' ? "" : ":" . $format) . "',\n";
-                    }
-                }
-            }
-            ?>
+<?= !empty($generator->searchModelClass) ? "            'filterModel' => \$searchModel,\n            'columns' => [\n" : "'columns' => [\n"; ?>
+<?php
+$count = 0;
+if (($tableSchema = $generator->getTableSchema()) === false) {
+    foreach ($generator->getColumnNames() as $name) {
+        if (++$count < 6) {
+            echo "                '" . $name . "',\n";
+        } else {
+            echo "                //'" . $name . "',\n";
+        }
+    }
+} else {
+    foreach ($tableSchema->columns as $column) {
+        $format = $generator->generateColumnFormat($column);
+        if (++$count < 6) {
+            echo "                '" . $column->name . ($format === 'text' ? "" : ":" . $format) . "',\n";
+        } else {
+            echo "                //'" . $column->name . ($format === 'text' ? "" : ":" . $format) . "',\n";
+        }
+    }
+}
+?>
 
-            [
-                'class' => 'yii\grid\ActionColumn',
-                'header' => 'Ações',
-                'template' => '{view}&nbsp;{update}&nbsp;{delete}',
-                'headerOptions' =>['style' => 'color: #3c8dbc; min-width:100px'],
-                'buttons' => [
-                    'view' => function ($url, $model) { return Html::a('<i class="fa fa-eye" aria-hidden="true"></i>', $url, ['class' => 'btn btn-xs btn-info', 'title' => Yii::t('yii', 'Detalhes'),]);},
-                    'update' => function ($url, $model) {return Html::a('<i class="fa fa-pencil-square-o" aria-hidden="true"></i>', $url, ['class' => 'btn btn-xs btn-warning', 'title' => Yii::t('yii', 'Editar'),]);},
-                    'delete' => function ($url, $model) {return Html::a('<i class="fa fa-trash" aria-hidden="true"></i>', $url, ['class' => 'btn btn-xs btn-danger', 'title' => Yii::t('yii', 'Deletar'), 'data' => ['confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),'method' => 'post']]);},
-                ]
+                [
+                    'class' => 'yii\grid\ActionColumn',
+                    'header' => 'Ações',
+                    'template' => '{view}&nbsp;{update}&nbsp;{delete}',
+                    'headerOptions' =>['style' => 'color: #3c8dbc; min-width:100px'],
+                    'buttons' => [
+                        'view' => function ($url, $model) { return Html::a('<i class="fa fa-eye" aria-hidden="true"></i>', $url, ['class' => 'btn btn-xs btn-info', 'title' => Yii::t('yii', 'Detalhes'),]);},
+                        'update' => function ($url, $model) {return Html::a('<i class="fa fa-pencil-square-o" aria-hidden="true"></i>', $url, ['class' => 'btn btn-xs btn-warning', 'title' => Yii::t('yii', 'Editar'),]);},
+                        'delete' => function ($url, $model) {return Html::a('<i class="fa fa-trash" aria-hidden="true"></i>', $url, ['class' => 'btn btn-xs btn-danger', 'title' => Yii::t('yii', 'Deletar'), 'data' => ['confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),'method' => 'post']]);},
+                    ]
+                ],
             ],
-            ],
-            ]); ?>
+        ]); ?>
         <?php else: ?>
             <?= "<?= " ?>ListView::widget([
             'dataProvider' => $dataProvider,
